@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@500&family=IBM+Plex+Sans:wght@700&family=PT+Serif:wght@400;700&family=Poppins:wght@100;300;400;500;600&family=Roboto+Slab:wght@200&family=Roboto:wght@100&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Gabarito', sans-serif ;
+    background-color: #333;
+    color: #222;
+    margin: 0;
+
+    /* x eksenindeki scrollu iptal ediyoruz */
+    overflow-x: hidden;
+}
+
+.container{
+    background-color: #fafafa;
+    /* bir elementin dönüşümünün etkisini
+     nereden başlayacağını belirlemek için kullanılır.
+     transform-origin: top left; kodu, dönüşümün başlangıç 
+     noktasını belirlemek için kullanılır. Bu kod, dönüşümün 
+     başlangıcını elementin sol üst köşesinden yani "üst sol" 
+     köşesinden başlayacağını belirtir. */
+    transform-origin: top left;
+    /* transition CSS özelliği, bir elementin belirli bir 
+    özellik üzerindeki değişikliklerin animasyonunu oluşturmak 
+    için kullanılır. Verilen kod, transform özelliğinin 0.5 
+    saniyede (yarım saniye) tamamlanacak bir lineer (lineer geçiş) 
+    animasyonunu belirtir. */
+    transition: transform 0.5s linear;
+    width: 100vw;
+    /* min yükseklik */
+    min-height: 100vh;
+    padding: 50px;
+}
+
+.container.show-nav{
+    transform: rotate(-20deg);
+}
+
+.circle-container{
+    /* sabitleme işlemi yapıp konumunu verdik */
+    position: fixed;
+    top: -100px;
+    left: -100px;
+}
+
+.circle{
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s linear;
+}
+
+.circle button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 26px;
+}
+
+.circle button:focus{
+    outline: none;
+}
+
+.circle button#open{
+    left: 60%
+}
+
+.circle button#close{
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left;
+}
+
+.container.show-nav .circle{
+    transform: rotate(-70deg);
+}
+
+.content{
+    max-width: 1000px;
+    /* margin: 50px auto;: Bu özellik, elementin dört kenarındaki 
+    dış boşlukları belirler. 50px değeri, elementin yukarıdan ve 
+    aşağıdan 50 piksel dış boşluk bırakacağını ifade eder. auto 
+    değeri ise yatay (sağ ve sol) dış boşlukların otomatik olarak 
+    eşit olarak paylaşılmasını sağlar. Bu, elementin ortalanmasını 
+    sağlar. Özellikle blok düzenli elementler için sayfanın merkezine 
+    yerleştirme işlevini yerine getirir. */
+    margin: 50px Auto;
+}
+
+.content h1{
+    margin:0;
+}
+
+.content small{
+    color: #555;
+    font-style: sans-serif ;
+}
+
+.content p{
+    color: #333;
+    line-height: 1.5;
+}
+
+.content img{
+    max-width: 100%;
+}
+
+nav{
+    position: fixed;
+    bottom: 25% ;
+    left: 0;
+    z-index: 100;
+
+}
+
+nav ul{
+    list-style: none;
+    padding-left: 30px;
+}
+
+nav ul li{
+    text-transform:uppercase ;
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in;
+}
+
+nav ul li+li{
+    margin-left:15px ;
+    transform: translateX(-150%);
+}
+
+nav ul li+li+li{
+    margin: 30px;
+    transform: translateX(-200%);
+}
+
+.container.show-nav + nav li{
+    transform: translateX(0);
+
+    transition-delay: 0.3s;
+}
